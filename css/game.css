@@ -1,0 +1,37 @@
+body{
+    background-color: rgb(66, 211, 201);
+}
+.main{
+    height: 100vh;
+}
+.tablero{
+height: 20vh;
+border: none;
+}
+.cell{
+    /* background-color: red; */
+    border: solid 1px black;
+    font-size: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p{
+    font-family: fantasy;
+    font-size: 1.25em;
+}
+@media (min-width: 900px){ 
+    p { 
+      font-size: 2rem;
+    }
+}
+@media (max-width: 900px){ 
+    .cell { 
+      font-size: 10vw;
+    }
+}
+@media (max-width: 650px){ 
+    .cell { 
+      font-size: 15vw;
+    }
+}
