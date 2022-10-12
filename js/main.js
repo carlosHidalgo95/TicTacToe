@@ -2,9 +2,9 @@ class Player {
     constructor(nombre, tipo) {
         this.nombre = nombre;
         this.tipo = tipo;
-        let turnos = 0;
-
+        this.turnos=3;
     }
+    
 }
 //Funciones
 
@@ -33,29 +33,39 @@ const handleBtnNewGameClick = () => {
         cell.innerHTML="";
         cell.addEventListener("click",handleCellClick);
     })
+    jugador1.turnos=3;
+    jugador2.turnos=3;
+    p1Turn=true;
+    info.innerHTML = `Turno de ${jugador1.nombre}`;
 }
 
 const handleCellClick = (clickedCellEvent) => {
     const clickedCell = clickedCellEvent.target;
-    if (p1Turn == true) {
-        clickedCell.innerHTML = "X"
-
-    } else {
-        clickedCell.innerHTML = "O"
-    }
-    console.log(checkWinner());
-    if (checkWinner()) {
-        if (p1Turn) {            
-            info.innerHTML=`${jugador1.nombre} es el ganador`
-        }else{
-            info.innerHTML=`${jugador2.nombre} es el ganador`
-
+    if (clickedCell.innerHTML=="") {
+        console.log(jugador1.turnos);
+        if (p1Turn == true&&jugador1.turnos>0) {
+                clickedCell.innerHTML = "X";
+                jugador1.turnos--;
+                turnSwitch();
+    
+        } else {
+            if (jugador2.turnos>0) {
+                clickedCell.innerHTML = "O"
+                jugador2.turnos--;
+                turnSwitch();
+            }
         }
-        cells.map((cell)=> {
-            cell.removeEventListener("click",handleCellClick);
-        })
-    }else{
-        turnSwitch();
+        if (checkWinner()) {
+            if (p1Turn) {            
+                info.innerHTML=`${jugador1.nombre} es el ganador`
+            }else{
+                info.innerHTML=`${jugador2.nombre} es el ganador`
+    
+            }
+            cells.map((cell)=> {
+                cell.removeEventListener("click",handleCellClick);
+            })
+        } 
     }
 }
 
