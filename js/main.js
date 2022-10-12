@@ -28,6 +28,7 @@ if (p1Turn) {
 
 }
 }
+
 const handleBtnNewGameClick = () => {
     cells.map((cell)=> {
         cell.innerHTML="";
@@ -46,13 +47,11 @@ const handleCellClick = (clickedCellEvent) => {
         if (p1Turn == true&&jugador1.turnos>0) {
                 clickedCell.innerHTML = "X";
                 jugador1.turnos--;
-                turnSwitch();
     
         } else {
             if (jugador2.turnos>0) {
                 clickedCell.innerHTML = "O"
                 jugador2.turnos--;
-                turnSwitch();
             }
         }
         if (checkWinner()) {
@@ -65,12 +64,18 @@ const handleCellClick = (clickedCellEvent) => {
             cells.map((cell)=> {
                 cell.removeEventListener("click",handleCellClick);
             })
+        }else{
+            turnSwitch();
         } 
     }
 }
 
-let jugador1 = new Player("Fulano", "Humano");
-let jugador2 = new Player("Retrasado", "Humano");
+const p1Name=sessionStorage.getItem('p1Name');
+const p2Name=sessionStorage.getItem('p2Name');
+const p1Type=sessionStorage.getItem('p1Type')
+const p2Type=sessionStorage.getItem('p2Type');
+let jugador1 = new Player(p1Name, p1Type);
+let jugador2 = new Player(p2Name, p2Type);
 let winner = false;
 let p1Turn = true;
 let info= document.getElementById("infoGame");
