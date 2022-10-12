@@ -6,6 +6,7 @@ class Player {
     }
     
 }
+
 //Funciones
 
 const checkWinner = () => {
@@ -29,6 +30,8 @@ if (p1Turn) {
 }
 }
 
+//Handlers
+
 const handleBtnNewGameClick = () => {
     cells.map((cell)=> {
         cell.innerHTML="";
@@ -47,28 +50,35 @@ const handleCellClick = (clickedCellEvent) => {
         if (p1Turn == true&&jugador1.turnos>0) {
                 clickedCell.innerHTML = "X";
                 jugador1.turnos--;
-    
+                turnSwitch();
+
         } else {
             if (jugador2.turnos>0) {
                 clickedCell.innerHTML = "O"
                 jugador2.turnos--;
+                turnSwitch();
             }
         }
+
+        //La comprobación del ganador se realiza a la inversa porque ya se ha cambiado el turno
+        //por lo que si es el turno del jugador1,ha ganado el jugador 2
+
         if (checkWinner()) {
             if (p1Turn) {            
-                info.innerHTML=`${jugador1.nombre} es el ganador`
+                info.innerHTML=`${jugador2.nombre} es el ganador`;
             }else{
-                info.innerHTML=`${jugador2.nombre} es el ganador`
-    
+                info.innerHTML=`${jugador1.nombre} es el ganador`;
             }
             cells.map((cell)=> {
                 cell.removeEventListener("click",handleCellClick);
             })
-        }else{
-            turnSwitch();
         } 
+    }else{
+        //Drag and drop aqui
     }
 }
+
+//Código main
 
 const p1Name=sessionStorage.getItem('p1Name');
 const p2Name=sessionStorage.getItem('p2Name');
