@@ -1,3 +1,6 @@
+let p1Type="Human";
+let p2Type="Human";
+let p1name,p2name;
 const showDropDown1=(item)=>{
     document.getElementById("dropdownMenu1").innerHTML = item.innerHTML;
     if (item.innerHTML=="Human") {
@@ -28,6 +31,3 @@ const btnPlay=()=>{
     }
 
 }
-let p1Type="Human";
-let p2Type="Human";
-let p1name,p2name;
