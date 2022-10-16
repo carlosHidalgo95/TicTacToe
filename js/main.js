@@ -44,24 +44,17 @@ const checkWinner = () => {
 }
 
 //La comprobación del ganador se realiza a la inversa porque ya se ha cambiado el turno
-//por lo que si hay un ganador y es el turno del player1,ha ganado el jugador 2
+//por lo que si hay un ganador y es el turno de player1,ha ganado player2
 
 const showWinner = () => {
     let nameWinner;
-    cells.map((cell) => {
-        cell.removeEventListener("click", handleCellClick);
-        cell.removeEventListener("click", handleCellClickSwitch);
-    })
     if (p1Turn) {
-        // info.innerHTML = `${player2.nombre} es el ganador`;
         nameWinner=player2.nombre;
     } else {
-        // info.innerHTML = `${player1.nombre} es el ganador`;
         nameWinner=player1.nombre;
     }
     sessionStorage.setItem('winner', nameWinner);
     window.location="../pages/winner.html";
-
 }
 
 //Cambio de turno
@@ -127,7 +120,8 @@ const handleBtnNewGame=()=>{
     window.location="../pages/settings.html"
 }
 
-//Handler para poner fichas 
+/*Handler para poner fichas.Solo se comprueba el turno si los 2 jugadores son humanos,
+  si uno de los 2 es cpu entonces no se usa el turno,el jugador tira y la cpu le responde */
 
 const handleCellClick = (clickedCellEvent) => {
     const clickedCell = clickedCellEvent.target;
@@ -139,7 +133,7 @@ const handleCellClick = (clickedCellEvent) => {
             if (p1Turn == true && player1.turnos > 0) {
                 player1.putMark(clickedCell);
                 turnSwitch();
-            } else if (player2.turnos > 0) {
+            } else if (p1Turn==false && player2.turnos > 0) {
                 player2.putMark(clickedCell);
                 turnSwitch();
             }
@@ -147,8 +141,7 @@ const handleCellClick = (clickedCellEvent) => {
         else {
 
             //En caso cpuVShumano
-
-            if (player1.tipo == "CPU" && player2.turnos >= 0) {
+            if (player1.tipo == "CPU" && player2.turnos > 0) {
                 player2.putMark(clickedCell);
                 turnSwitch();
                 if (!checkWinner() && player1.turnos > 0) {
