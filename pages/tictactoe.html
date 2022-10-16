@@ -15,12 +15,15 @@
             <p id="player1Text">Player 2:Name   Type:Human</p>
             <p id="player2Text">Player 1:Name   Type:CPU</p>
         </div>
-        <button id="btn-new-game" class="align-self-center">New Game</button>
+        <div class="d-flex justify-content-center">
+            <button id="btn-restart-match" class="align-self-center">Restart Match</button>
+            <button id="btn-new-game" class="align-self-center">New Game</button>
+        </div>
         <p id="infoGame" class="align-self-center mt-1">Turno jugador 1</p>
         <div class="row justify-content-center">
         <div class="tablero col-11 col-md-8 col-lg-4 mt-1">
             <div class="row h-100">
-                <div id="cell1" class="col cell"></div>
+                <div id="cell1" draggable="true" class="col cell"></div>
                 <div id="cell2" class="col cell"></div>
                 <div id="cell3" class="col cell"></div>
             </div>

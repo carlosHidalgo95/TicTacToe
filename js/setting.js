@@ -22,7 +22,10 @@ const btnPlay=()=>{
     p2name= document.getElementById("input-p2").value;
     if (p1name==""||p2name=="") {
         document.getElementById("alert").innerHTML="Both players need a name"
-    }else{
+    }else if(p1Type=="CPU"&&p2Type=="CPU"){
+        document.getElementById("alert").innerHTML="Both players cannot be CPU"
+    }
+    else{
         sessionStorage.setItem('p1Name', p1name);
         sessionStorage.setItem('p2Name', p2name);
         sessionStorage.setItem('p1Type', p1Type);

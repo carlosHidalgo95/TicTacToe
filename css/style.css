@@ -1,6 +1,8 @@
 body{
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    background-color: rgb(66, 211, 201);
+    margin: 0;
+
 }
 .div-main{
     height: 100%;
@@ -13,12 +15,13 @@ body{
 .btn-start{
     height: 15%;
     width: 50%;
-    background-color: black;
+    /* background-color: black; */
     color: green;
 
 }
 a{
     font-size: 10vw;
+    font-family: myFont;
     height: 100%;
     width: 100%;
     display: flex;
@@ -28,4 +31,25 @@ a{
 }
 h1{
     font-size: 12vw;
+    font-family: myFont;
 }
+
+@font-face {
+    font-family: myFont;
+    src: url(../fonts/FuzzyBubbles-Bold.ttf);
+}
+
+@media (max-width: 700px){ 
+    h1,a { 
+      font-size: 15vw;
+    }
+}
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
