@@ -2,7 +2,6 @@ body{
     height: 100vh;
     background-color: rgb(66, 211, 201);
     margin: 0;
-
 }
 .div-main{
     height: 100%;
@@ -15,9 +14,7 @@ body{
 .btn-start{
     height: 15%;
     width: 50%;
-    /* background-color: black; */
     color: green;
-
 }
 a{
     font-size: 10vw;

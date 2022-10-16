@@ -4,3 +4,11 @@ body{
 .playerSett{
     height:40vh;
 }
+
+.card{
+    border: 2px solid black;
+}
+
+.playerTitle{
+    color: darkred;
+}

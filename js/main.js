@@ -47,16 +47,21 @@ const checkWinner = () => {
 //por lo que si hay un ganador y es el turno del player1,ha ganado el jugador 2
 
 const showWinner = () => {
-
-    if (p1Turn) {
-        info.innerHTML = `${player2.nombre} es el ganador`;
-    } else {
-        info.innerHTML = `${player1.nombre} es el ganador`;
-    }
+    let nameWinner;
     cells.map((cell) => {
         cell.removeEventListener("click", handleCellClick);
         cell.removeEventListener("click", handleCellClickSwitch);
     })
+    if (p1Turn) {
+        // info.innerHTML = `${player2.nombre} es el ganador`;
+        nameWinner=player2.nombre;
+    } else {
+        // info.innerHTML = `${player1.nombre} es el ganador`;
+        nameWinner=player1.nombre;
+    }
+    sessionStorage.setItem('winner', nameWinner);
+    window.location="../pages/winner.html";
+
 }
 
 //Cambio de turno
@@ -98,7 +103,7 @@ const cpuSwitchMark = (jugador) => {
     console.log(switching, switched);
 }
 
-//Handler boton New Game
+//Handler boton Restart Match
 
 const handleBtnRestartMatchClick = () => {
     cells.map((cell) => {
@@ -115,6 +120,8 @@ const handleBtnRestartMatchClick = () => {
         turnSwitch();
     }
 }
+
+//Handler boton New Game
 
 const handleBtnNewGame=()=>{
     window.location="../pages/settings.html"
